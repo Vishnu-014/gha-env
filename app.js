@@ -1,19 +1,12 @@
-import express from "express";
-import eventsRouter from "./routes/events.js";
-import { connectDB } from "./data/database.js";
+import bodyParser from 'body-parser';
+import express from 'express';
+
+import eventRoutes from './routes/events.js';
 
 const app = express();
-app.use(express.json());
 
-async function startServer() {
-  await connectDB(); // ✅ ensures DB is connected before routes use it
+app.use(bodyParser.json());
 
-  app.use("/events", eventsRouter);
+app.use(eventRoutes);
 
-  const PORT = process.env.PORT || 8080;
-  app.listen(PORT, () => {
-    console.log(`🚀 Server running on http://127.0.0.1:${PORT}`);
-  });
-}
-
-startServer();
+app.listen(process.env.PORT);
