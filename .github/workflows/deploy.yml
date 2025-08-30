@@ -13,7 +13,6 @@ jobs:
       MONGODB_USERNAME: vishnu14520_db_user
       MONGODB_PASSWORD: YKdO8rNVBlYrtUXe
       PORT: 8080
-    environment: testing
     runs-on: ubuntu-latest
     steps:
       - name: Get Code
@@ -37,5 +36,4 @@ jobs:
     steps:
       - name: Output information
         run: |
-          echo "MONGODB_USERNAME ${{ env.MONGODB_USERNAME }}"
           echo "MONGODB_DB_NAME ${{ env.MONGODB_DB_NAME }}"
